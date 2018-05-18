@@ -10,13 +10,17 @@ const Product = require('./models/product.js');
 
 
 // ROUTES
-app.get('/products', async(req, res)=>{
+
+// serve frontend files (excluded from ACL)
+app.use(express.static('../client/'));
+
+app.get('/rest/products', async(req, res)=>{
   //res.send('We are products');
   let products = await Product.find(); // {name:"The Times"}
   res.json(products);
 });
 
-app.post('/products', async(req, res)=>{
+app.post('/rest/products', async(req, res)=>{
   //res.send('We would create a product');
   let product = await new Product(req.body);
   try{
@@ -27,7 +31,7 @@ app.post('/products', async(req, res)=>{
   res.json(product);
 });
 
-app.put('/products/:id', async(req, res)=>{
+app.put('/rest/products/:id', async(req, res)=>{
   //res.send('We would update a product');
 
   // get the product from the db
@@ -40,7 +44,7 @@ app.put('/products/:id', async(req, res)=>{
   res.json(result);
 });
 
-app.delete('/products', (req, res)=>{
+app.delete('/rest/products', (req, res)=>{
   res.send('We would delete a product');
 });
 

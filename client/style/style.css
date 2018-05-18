@@ -1,0 +1,11 @@
+body{
+  background-image:url(../images/newspaper.jpg);
+  background-size:cover;
+  background-attachment: fixed;
+  min-height:100vh;
+  color:white;
+  padding:2vmax;
+}
+#app{
+
+}
